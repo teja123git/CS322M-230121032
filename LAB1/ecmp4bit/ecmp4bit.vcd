@@ -1,0 +1,51 @@
+$date
+	Thu Jul 31 11:33:37 2025
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ps
+$end
+$scope module tb_ecmp4bit $end
+$var wire 1 ! eq $end
+$var reg 4 " A [3:0] $end
+$var reg 4 # B [3:0] $end
+$scope module dut $end
+$var wire 4 $ A [3:0] $end
+$var wire 4 % B [3:0] $end
+$var wire 1 ! eq $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+b0 %
+b0 $
+b0 #
+b0 "
+1!
+$end
+#10000
+b1001 #
+b1001 %
+0!
+b1100 "
+b1100 $
+#20000
+1!
+b1111 #
+b1111 %
+b1111 "
+b1111 $
+#30000
+b1010 #
+b1010 %
+0!
+b101 "
+b101 $
+#40000
+1!
+b1010 "
+b1010 $
+#50000
