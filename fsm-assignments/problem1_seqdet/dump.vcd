@@ -1,0 +1,142 @@
+$date
+	Sun Aug 17 23:56:05 2025
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ps
+$end
+$scope module tb_seq_detect_mealy $end
+$var wire 1 ! y $end
+$var reg 11 " bitstream [10:0] $end
+$var reg 1 # clk $end
+$var reg 1 $ din $end
+$var reg 1 % rst $end
+$var integer 32 & i [31:0] $end
+$scope module dut $end
+$var wire 1 # clk $end
+$var wire 1 $ din $end
+$var wire 1 % rst $end
+$var wire 1 ! y $end
+$var reg 2 ' state_next [1:0] $end
+$var reg 2 ( state_present [1:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+bx (
+b0 '
+bx &
+1%
+0$
+0#
+b11011011101 "
+0!
+$end
+#5000
+b0 (
+1#
+#10000
+0#
+#15000
+b1010 &
+0%
+1#
+#20000
+0#
+#25000
+b1 '
+b1001 &
+1$
+1#
+#30000
+0#
+#35000
+b10 '
+b1 (
+b1000 &
+1#
+#40000
+0#
+#45000
+b10 (
+b11 '
+b111 &
+0$
+1#
+#50000
+0#
+#55000
+1!
+b11 (
+b10 '
+b110 &
+1$
+1#
+#60000
+0#
+#65000
+0!
+b10 (
+b101 &
+1#
+#70000
+0#
+#75000
+b11 '
+b100 &
+0$
+1#
+#80000
+0#
+#85000
+1!
+b11 (
+b10 '
+b11 &
+1$
+1#
+#90000
+0#
+#95000
+0!
+b10 (
+b10 &
+1#
+#100000
+0#
+#105000
+b1 &
+1#
+#110000
+0#
+#115000
+b11 '
+b0 &
+0$
+1#
+#120000
+0#
+#125000
+1!
+b11 (
+b10 '
+b11111111111111111111111111111111 &
+1$
+1#
+#130000
+0#
+#135000
+0!
+b10 (
+1#
+#140000
+0#
+#145000
+1#
+#150000
+0#
+#155000
+1#
