@@ -30,7 +30,7 @@ module tb_vending_mealy;
 
     // Stimulus
     initial begin
-        $dumpfile("tb_vending_mealy.vcd");
+        $dumpfile("dump.vcd");
         $dumpvars(0, tb_vending_mealy);
 
         // Reset
