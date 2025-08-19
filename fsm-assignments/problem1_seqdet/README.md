@@ -1,63 +1,94 @@
-### Problem 1 — Sequence Detector
+# Problem 1 — Sequence Detector (1101) - Mealy FSM
 
-```markdown
-# Sequence Detector (1101) - Mealy FSM
+This repository implements a **Mealy Finite State Machine (FSM)** to detect the sequence **1101** in a serial input stream, with support for **overlapping sequences**.  
+When the sequence is detected, the output `y` generates a **single-cycle pulse**.
 
-This design implements a Mealy FSM that detects the sequence **1101** in a serial input stream with overlap handling.  
-On detecting the pattern, the output `y` generates a **single-cycle pulse**.
+---
+
+## Overview
+- Monitors a serial input stream (`din`).  
+- Outputs `y = 1` for **one clock cycle** when sequence `1101` is detected.  
+- Supports **overlaps**: a new sequence can begin before the previous one ends.  
 
 ---
 
 ## State Diagram
-
 ![FSM Diagram](fsm.jpg)
 
 ---
 
-## States
+## FSM States
+- **Init (00):** Initial state, no match detected  
+- **One (01):** Detected a single `'1'`  
+- **Two (10):** Detected `"11"`  
+- **Three (11):** Detected `"110"`  
 
-- `init` (00): No match yet
-- `one` (01): Detected '1'
-- `two` (10): Detected "11"
-- `three` (11): Detected "110"
+---
 
-**Transitions**
-```
+## State Transition Table
 
-init --1--> one --1--> two --0--> three --1/y=1--> one
-
-````
+| Current State | Input | Next State | Output (y) |
+|---------------|-------|------------|------------|
+| Init (00)     | 0     | Init       | 0 |
+| Init (00)     | 1     | One        | 0 |
+| One (01)      | 0     | Init       | 0 |
+| One (01)      | 1     | Two        | 0 |
+| Two (10)      | 0     | Three      | 0 |
+| Two (10)      | 1     | Two        | 0 |
+| Three (11)    | 0     | Init       | 0 |
+| Three (11)    | 1     | One        | 1 |
 
 ---
 
 ## Files
-- `seq_detect_mealy.v` – FSM implementation
-- `tb_seq_detect_mealy.v` – Testbench
+- `seq_detect_mealy.v` — Verilog implementation of the FSM  
+- `tb_seq_detect_mealy.v` — Testbench for simulation  
+
+---
+
+## Prerequisites
+- **Icarus Verilog** — for compiling and simulating Verilog  
+- **GTKWave** — for viewing waveforms  
+
+Install on Ubuntu/Debian:
+```bash
+sudo apt-get install iverilog gtkwave
+````
 
 ---
 
 ## Run Simulation
+
 ```bash
+# Compile
 iverilog -g2012 -o seqdet_sim seq_detect_mealy.v tb_seq_detect_mealy.v
+
+# Run
 vvp seqdet_sim
+
+# View waveform
 gtkwave dump.vcd
-````
+```
 
 ---
 
 ## Expected Behavior
 
-Bitstream: `11011011101`
+For input bitstream:
 
-- Detection occurs at indices: 45ns, 75ns, 115ns
-- `y=1` pulses exactly 3 times
+```
+11011011101
+```
+
+* Detection occurs at: **45ns, 75ns, 115ns**
+* Output `y` produces **3 single-cycle pulses**
 
 ---
 
 ## Results
 
-- Correctly detects overlapping `1101`
-- Single-cycle pulse on detection
-- Verified with waveform below
+* Correctly detects overlapping `1101` sequences
+* `y` generates a **single-cycle pulse** on detection
+* Verified in **GTKWave**
 
 ![Waveform](waves/waves.jpg)
