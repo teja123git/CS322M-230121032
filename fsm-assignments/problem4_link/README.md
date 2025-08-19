@@ -16,7 +16,7 @@ The protocol ensures reliable transfer of **4 data bytes** over an 8-bit data bu
 
 ---
 
-## System Diagram
+## State Diagram
 
 ![FSM Diagram](fsm.jpg)
 
