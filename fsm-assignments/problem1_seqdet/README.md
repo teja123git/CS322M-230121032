@@ -91,4 +91,4 @@ For input bitstream:
 * `y` generates a **single-cycle pulse** on detection
 * Verified in **GTKWave**
 
-![Waveform](waves/waves.jpg)
+![Waveform](waves/waves.png)
